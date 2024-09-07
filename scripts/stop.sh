@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PROJECT_ROOT="/home/ubuntu/app"
-JAR_FILE="$PROJECT_ROOT/spring-webapp.jar"
+JAR_FILE="$PROJECT_ROOT/build/libs/project_spring_boot-0.0.1-SNAPSHOT.jar"  # 동일한 JAR 파일 경로 사용
 
 DEPLOY_LOG="$PROJECT_ROOT/deploy.log"
 
@@ -14,6 +14,7 @@ CURRENT_PID=$(pgrep -f $JAR_FILE)
 if [ -z $CURRENT_PID ]; then
   echo "$TIME_NOW > 현재 실행중인 애플리케이션이 없습니다" >> $DEPLOY_LOG
 else
-  echo "$TIME_NOW > 실행중인 $CURRENT_PID 애플리케이션 종료 " >> $DEPLOY_LOG
+  echo "$TIME_NOW > 실행중인 $CURRENT_PID 애플리케이션 종료" >> $DEPLOY_LOG
   kill -15 $CURRENT_PID
+  sleep 5  # 프로세스 종료를 기다림
 fi
