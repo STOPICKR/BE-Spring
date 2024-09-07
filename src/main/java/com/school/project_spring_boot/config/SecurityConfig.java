@@ -17,7 +17,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
-            "/api/v1/**", "/h2-console/**",
+            "/api/v1/**",
+            "/h2-console/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",  // 이 경로 추가
+            "/swagger-resources/**",
+            "/swagger-ui.html"  // 이 경로 추가
     };
 
     @Bean
