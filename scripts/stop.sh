@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PROJECT_ROOT="/home/ubuntu/app"
-JAR_FILE="$PROJECT_ROOT/build/libs/project_spring_boot-0.0.1-SNAPSHOT.jar"  # 동일한 JAR 파일 경로 사용
+JAR_FILE="$PROJECT_ROOT/build/libs/*.jar"  # 동일한 JAR 파일 경로 사용
 
 DEPLOY_LOG="$PROJECT_ROOT/deploy.log"
 

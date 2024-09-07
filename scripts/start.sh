@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PROJECT_ROOT="/home/ubuntu/app"
-JAR_FILE="$PROJECT_ROOT/build/libs/project_spring_boot-0.0.1-SNAPSHOT.jar"  # 빌드된 JAR 파일 경로 수정
+JAR_FILE="$PROJECT_ROOT/build/libs/*.jar"  # 빌드된 JAR 파일 경로 수정
 
 APP_LOG="$PROJECT_ROOT/application.log"
 ERROR_LOG="$PROJECT_ROOT/error.log"
