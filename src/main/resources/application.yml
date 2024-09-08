@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${url}
-    username: ${username}
-    password: ${password}
+    url: ${mysql_url}
+    username: ${mysql_username}
+    password: ${mysql_password}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -14,12 +14,12 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
     defer-datasource-initialization: true
 
-  #Gmail ??
+  #Gmail Configuration
   mail:
     host: smtp.gmail.com
-    port: ${port}
-    username: ${username}
-    password: ${password}
+    port: ${mail_port}
+    username: ${mail_username}
+    password: ${mail_password}
     properties:
       mail:
         smtp:
@@ -28,10 +28,10 @@ spring:
             enable: true
 
   publicData:
-    serviceKey: ${serviceKey}
+    serviceKey: ${public_data_service_key}
 
   jwt:
-    secret: ${secret}
+    secret: ${jwt_secret}
     issuer: admin
     access_token_expiration_time: 86400000 #1일
     refresh_token_expiration_time: 864000000 #7일

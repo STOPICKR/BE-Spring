@@ -35,14 +35,19 @@ jobs:
 
       - name: Replace environment variables in Yaml
         run: |
-          sed -i 's|${url}|${{ secrets.MYSQL_URL }}|g' ./src/main/resources/application.yml
-          sed -i 's|${username}|${{ secrets.MYSQL_USERNAME }}|g' ./src/main/resources/application.yml
-          sed -i 's|${password}|${{ secrets.MYSQL_PASSWORD }}|g' ./src/main/resources/application.yml
-          sed -i 's|${port}|${{ secrets.MAIL_PORT }}|g' ./src/main/resources/application.yml
-          sed -i 's|${username}|${{ secrets.MAIL_USERNAME }}|g' ./src/main/resources/application.yml
-          sed -i 's|${password}|${{ secrets.MAIL_PASSWORD }}|g' ./src/main/resources/application.yml
-          sed -i 's|${serviceKey}|${{ secrets.PUBLIC_DATA_SERVICE_KEY }}|g' ./src/main/resources/application.yml
-          sed -i 's|${secret}|${{ secrets.JWT_SECRET }}|g' ./src/main/resources/application.yml
+          # MySQL configuration
+          sed -i 's|${mysql_url}|${{ secrets.MYSQL_URL }}|g' ./src/main/resources/application.yml
+          sed -i 's|${mysql_username}|${{ secrets.MYSQL_USERNAME }}|g' ./src/main/resources/application.yml
+          sed -i 's|${mysql_password}|${{ secrets.MYSQL_PASSWORD }}|g' ./src/main/resources/application.yml
+
+          # Gmail configuration
+          sed -i 's|${mail_port}|${{ secrets.MAIL_PORT }}|g' ./src/main/resources/application.yml
+          sed -i 's|${mail_username}|${{ secrets.MAIL_USERNAME }}|g' ./src/main/resources/application.yml
+          sed -i 's|${mail_password}|${{ secrets.MAIL_PASSWORD }}|g' ./src/main/resources/application.yml
+
+          # Other secrets
+          sed -i 's|${public_data_service_key}|${{ secrets.PUBLIC_DATA_SERVICE_KEY }}|g' ./src/main/resources/application.yml
+          sed -i 's|${jwt_secret}|${{ secrets.JWT_SECRET }}|g' ./src/main/resources/application.yml
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
