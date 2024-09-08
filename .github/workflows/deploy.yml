@@ -38,19 +38,16 @@ jobs:
         with:
           arguments: clean build -x test
 
-      - name: Set Yaml
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: ./src/main/resources/application.yml
-        env:
-          spring.datasource.url: ${{ secrets.MYSQL_URL }}
-          spring.datasource.username: ${{ secrets.MYSQL_USERNAME }}
-          spring.datasource.password: ${{ secrets.MYSQL_PASSWORD }}
-          spring.mail.port: ${{ secrets.MAIL_PORT }}
-          spring.mail.username: ${{ secrets.MAIL_USERNAME }}
-          spring.mail.password: ${{ secrets.MAIL_PASSWORD }}
-          publicData.serviceKey: ${{ secrets.PUBLIC_DATA_SERVICE_KEY }}
-          jwt.secret: ${{ secrets.JWT_SECRET }}
+      - name: Replace environment variables in Yaml
+        run: |
+          sed -i 's/\${url}/${{ secrets.MYSQL_URL }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${username}/${{ secrets.MYSQL_USERNAME }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${password}/${{ secrets.MYSQL_PASSWORD }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${port}/${{ secrets.MAIL_PORT }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${username}/${{ secrets.MAIL_USERNAME }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${password}/${{ secrets.MAIL_PASSWORD }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${serviceKey}/${{ secrets.PUBLIC_DATA_SERVICE_KEY }}/g' ./src/main/resources/application.yml
+          sed -i 's/\${secret}/${{ secrets.JWT_SECRET }}/g' ./src/main/resources/application.yml
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
