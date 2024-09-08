@@ -10,5 +10,5 @@ public class TestController {
     public String test1(){
         return "test1";
     }
-    //test2
+    //test1
 }
