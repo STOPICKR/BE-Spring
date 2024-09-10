@@ -36,6 +36,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String path = request.getRequestURI();
+        if ("/actuator/health".equals(path)) {
+            // 헬스 체크 경로에 대해서는 필터를 적용하지 않음
+            filterChain.doFilter(request, response);
+            return;
+        }
         try {
             //authorization이 없거나 bearer토큰이 아니면
             String token = parseBearerToken(request);
