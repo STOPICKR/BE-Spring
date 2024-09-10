@@ -35,3 +35,12 @@ spring:
     issuer: admin
     access_token_expiration_time: 86400000 #1일
     refresh_token_expiration_time: 864000000 #7일
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
