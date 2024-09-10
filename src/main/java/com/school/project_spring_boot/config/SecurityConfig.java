@@ -22,8 +22,7 @@ public class SecurityConfig {
             "/swagger-ui/**",
             "/v3/api-docs/**",
             "/swagger-resources/**",
-            "/swagger-ui.html",
-            "/actuator/health"  // 헬스 체크 경로 추가
+            "/swagger-ui.html"
     };
 
     @Bean
