@@ -1,15 +1,15 @@
 name: Deploy to Amazon EC2
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: yunjae-project
-  CODE_DEPLOY_APPLICATION_NAME: yunjae-project-codedeploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: yunjae-project-codedeploy-group
+  S3_BUCKET_NAME: stopickr-github-actions-s3
+  CODE_DEPLOY_APPLICATION_NAME: stopickr-codedeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: stopickr-codedeploy-group
 
 permissions:
   contents: read
