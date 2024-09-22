@@ -9,7 +9,7 @@ env:
   AWS_REGION: ap-northeast-2
   S3_BUCKET_NAME: stopickr-github-actions-s3
   CODE_DEPLOY_APPLICATION_NAME: stopickr-codedeploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: stopickr-codedeploy-group
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: stopickr-codedeploy
 
 permissions:
   contents: read
